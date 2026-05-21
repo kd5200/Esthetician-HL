@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Age defense facial">
+  <defs>
+    <linearGradient id="ageBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3e0d2"/>
+      <stop offset="1" stop-color="#c89c8a"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#ageBg)"/>
+  <!-- serum bottle -->
+  <g transform="translate(260 90)">
+    <rect x="0" y="40" width="80" height="200" rx="14" fill="#ffffff" opacity="0.9"/>
+    <rect x="0" y="40" width="80" height="200" rx="14" fill="none" stroke="#a85a44" stroke-width="2"/>
+    <rect x="22" y="10" width="36" height="40" rx="6" fill="#a85a44"/>
+    <rect x="10" y="120" width="60" height="50" fill="#fbe4d4"/>
+    <text x="40" y="152" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#a85a44" font-style="italic">renew</text>
+  </g>
+  <!-- droplets -->
+  <circle cx="160" cy="120" r="8" fill="#ffffff" opacity="0.7"/>
+  <circle cx="440" cy="280" r="10" fill="#ffffff" opacity="0.55"/>
+  <circle cx="120" cy="300" r="6" fill="#ffffff" opacity="0.5"/>
+  <circle cx="480" cy="120" r="6" fill="#ffffff" opacity="0.6"/>
+</svg>

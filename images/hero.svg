@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Esthetician portrait placeholder">
+  <defs>
+    <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f9e3d6"/>
+      <stop offset="1" stop-color="#d49a82"/>
+    </linearGradient>
+    <radialGradient id="heroGlow" cx="0.35" cy="0.3" r="0.7">
+      <stop offset="0" stop-color="#ffe9dc" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffe9dc" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="leaf1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#cdd9b7"/>
+      <stop offset="1" stop-color="#8aa477"/>
+    </linearGradient>
+    <linearGradient id="leaf2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b9c9a4"/>
+      <stop offset="1" stop-color="#6f8a5f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#heroBg)"/>
+  <rect width="800" height="1000" fill="url(#heroGlow)"/>
+
+  <!-- soft sun -->
+  <circle cx="600" cy="260" r="180" fill="#ffd9c4" opacity="0.55"/>
+
+  <!-- silhouette -->
+  <path d="M400 360
+           c80 0 130 70 130 150
+           v40
+           c30 10 55 40 55 80
+           v40
+           c0 50 -40 70 -90 80
+           l-10 110
+           c-3 30 -30 50 -55 50
+           h-60
+           c-25 0 -52 -20 -55 -50
+           l-10 -110
+           c-50 -10 -90 -30 -90 -80
+           v-40
+           c0 -40 25 -70 55 -80
+           v-40
+           c0 -80 50 -150 130 -150 z"
+        fill="#b97462" opacity="0.85"/>
+
+  <!-- hair -->
+  <path d="M270 470
+           c-20 -110 60 -200 160 -200
+           c100 0 175 80 165 200
+           c-5 60 -25 80 -45 80
+           c-60 -30 -80 -30 -120 -30
+           c-40 0 -60 0 -120 30
+           c-20 0 -35 -20 -40 -80 z"
+        fill="#3a2520"/>
+
+  <!-- leaves -->
+  <path d="M60 80 Q200 0 360 100 Q220 60 80 200 Z" fill="url(#leaf1)" opacity="0.9"/>
+  <path d="M740 880 Q620 980 480 900 Q620 940 740 760 Z" fill="url(#leaf2)" opacity="0.9"/>
+
+  <!-- subtle texture dots -->
+  <g fill="#ffffff" opacity="0.15">
+    <circle cx="120" cy="600" r="3"/>
+    <circle cx="680" cy="500" r="4"/>
+    <circle cx="200" cy="820" r="3"/>
+    <circle cx="640" cy="120" r="3"/>
+  </g>
+</svg>

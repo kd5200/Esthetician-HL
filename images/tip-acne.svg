@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Acne tip">
+  <defs>
+    <linearGradient id="acneTipBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3dccc"/>
+      <stop offset="1" stop-color="#cc8e76"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#acneTipBg)"/>
+  <!-- face outline -->
+  <g transform="translate(200 60)">
+    <path d="M100 0
+             c60 0 100 50 100 110
+             c0 70 -45 130 -100 130
+             c-55 0 -100 -60 -100 -130
+             c0 -60 40 -110 100 -110 z"
+          fill="#ffe0d2"/>
+    <!-- spots -->
+    <circle cx="70" cy="120" r="6" fill="#c97a63"/>
+    <circle cx="130" cy="100" r="5" fill="#c97a63"/>
+    <circle cx="100" cy="170" r="7" fill="#c97a63"/>
+    <circle cx="150" cy="160" r="4" fill="#c97a63"/>
+    <circle cx="60" cy="180" r="5" fill="#c97a63"/>
+    <!-- patch -->
+    <circle cx="100" cy="170" r="14" fill="none" stroke="#a85a44" stroke-width="2" stroke-dasharray="3 3"/>
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Brow shape and wax">
+  <defs>
+    <linearGradient id="browBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5d9c5"/>
+      <stop offset="1" stop-color="#cd9075"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#browBg)"/>
+  <!-- brows -->
+  <path d="M180 180 q40 -30 110 -20 q-50 0 -100 20 z" fill="#3a2520"/>
+  <path d="M310 160 q60 -10 110 20 q-50 -20 -110 0 z" fill="#3a2520"/>
+  <!-- eyes -->
+  <ellipse cx="230" cy="230" rx="22" ry="10" fill="#3a2520" opacity="0.65"/>
+  <ellipse cx="370" cy="230" rx="22" ry="10" fill="#3a2520" opacity="0.65"/>
+  <!-- lashes -->
+  <g stroke="#3a2520" stroke-width="2" stroke-linecap="round" opacity="0.65">
+    <line x1="212" y1="220" x2="206" y2="208"/>
+    <line x1="222" y1="217" x2="220" y2="203"/>
+    <line x1="232" y1="216" x2="232" y2="202"/>
+    <line x1="242" y1="217" x2="244" y2="203"/>
+    <line x1="252" y1="220" x2="258" y2="208"/>
+    <line x1="352" y1="220" x2="346" y2="208"/>
+    <line x1="362" y1="217" x2="360" y2="203"/>
+    <line x1="372" y1="216" x2="372" y2="202"/>
+    <line x1="382" y1="217" x2="384" y2="203"/>
+    <line x1="392" y1="220" x2="398" y2="208"/>
+  </g>
+  <!-- subtle highlight -->
+  <ellipse cx="300" cy="320" rx="120" ry="14" fill="#ffffff" opacity="0.25"/>
+</svg>
