@@ -1,5 +1,7 @@
 # Hajime Lente — Skin Studio
 
+> **Agents:** read [AGENTS.md](AGENTS.md) first.
+
 A single-page marketing website for **Hajime Lente**, Licensed Esthetician based in Fort Lauderdale, FL. Inspired by the layout/aesthetic of [skinprettyla.com](https://skinprettyla.com/) with a cinematic video collage hero like [Essential Aesthetics](https://essentialaestheticsfl.com/).
 
 ## What's inside

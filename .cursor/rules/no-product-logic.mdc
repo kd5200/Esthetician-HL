@@ -1,0 +1,25 @@
+---
+description: Do not change site product logic unless explicitly directed
+globs: ["src/**", "styles.css", "index.html"]
+alwaysApply: true
+---
+
+# No product logic changes
+
+This repo is scaffolded for agentic delivery. The marketing site in `src/` is
+**off limits** unless the user explicitly asks for a product change.
+
+## Allowed without explicit direction
+
+- Scaffolding: `AGENTS.md`, `docs/`, `specs/`, `.cursor/`, `.github/`
+- Fixing CI/build breakage caused by scaffolding
+- Updating agent docs to reflect reality
+
+## Requires explicit user direction
+
+- Editing `src/**`, `styles.css`, or `index.html`
+- Adding dependencies to `package.json`
+- Wiring contact forms, webhooks, or analytics
+- Changing copy, layout, colors, or animations
+
+When product work is requested, check `specs/active/` first or create a spec.
