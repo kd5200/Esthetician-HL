@@ -1,5 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { ease, fadeDown } from '../motion/presets';
+import BookLink from './BookLink';
+import { SITE } from '../siteConfig';
 
 export default function SiteHeader() {
   const reduceMotion = useReducedMotion();
@@ -40,9 +42,9 @@ function HeaderInner() {
         <a href="#expect">What to Expect</a>
         <a href="#tips">Skincare Tips</a>
         <a href="#contact">Contact</a>
-        <a href="#book" className="btn btn-primary nav-cta">
+        <BookLink className="btn btn-primary nav-cta">
           Book Now
-        </a>
+        </BookLink>
       </nav>
       <button className="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span />
@@ -68,17 +70,17 @@ export function SiteFooter({ year }) {
     {
       title: 'Connect',
       links: [
-        { href: 'mailto:Hajimel@icloud.com', label: 'Hajimel@icloud.com' },
-        { href: 'tel:+13373782049', label: '(337) 378-2049' },
-        { href: '#contact', label: 'Book Now' },
+        { href: `mailto:${SITE.email}`, label: SITE.email },
+        { href: `tel:${SITE.phoneTel}`, label: SITE.phoneDisplay },
+        { href: '#book', label: 'Book Online' },
       ],
     },
     {
       title: 'Policies',
       links: [
-        { href: '#', label: 'FAQs' },
-        { href: '#', label: 'Cancellation' },
-        { href: '#', label: 'Privacy' },
+        { href: '#policies', label: 'Booking & Deposits' },
+        { href: '#policies', label: 'Cancellations' },
+        { href: '#contact', label: 'Contact' },
       ],
     },
   ];

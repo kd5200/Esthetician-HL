@@ -23,7 +23,8 @@ esthetician-hl/
   specs/archived/        ← done or rejected specs
   experiments/           ← copy/layout experiment notes
   artifacts/             ← screenshots, exports (gitignored)
-  .github/workflows/     ← CI
+  infra/terraform/       ← AWS S3 + CloudFront (see infra/README.md)
+  .github/workflows/     ← CI + deploy
   .cursor/rules/         ← agent conventions
 ```
 
@@ -54,10 +55,13 @@ npm run preview      # serve dist/
 
 ## CI
 
-`ci.yml` runs `npm ci && npm run build` on every push/PR to `main`.
+- `ci.yml` — `npm ci && npm run build` on every push/PR to `main`
+- `deploy.yml` — build + S3 sync + CloudFront invalidation on push to `main`
+  (requires AWS secrets; see [docs/github-cicd.md](docs/github-cicd.md))
 
 ## When unsure
 
 - Architecture → [docs/architecture.md](docs/architecture.md)
+- AWS infra → [docs/infrastructure.md](docs/infrastructure.md)
 - Deploy → [docs/deployment.md](docs/deployment.md)
 - Decisions → [docs/decisions.md](docs/decisions.md)

@@ -1,0 +1,10 @@
+# Copy to terraform.tfvars and adjust before: terraform apply
+
+project_name  = "hajime-lente-skin-studio"
+environment   = "prod"
+aws_region    = "us-east-1"
+github_repository = "kd5200/Esthetician-HL"
+
+# Optional custom domain (ACM cert must be in us-east-1):
+# domain_names        = ["hajimelente.com", "www.hajimelente.com"]
+# acm_certificate_arn = "arn:aws:acm:us-east-1:ACCOUNT:certificate/CERT-ID"

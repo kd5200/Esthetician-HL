@@ -578,6 +578,233 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   text-align: center;
   margin-top: 56px;
 }
+.services-cta .deposit-notice--compact {
+  max-width: 520px;
+  margin: 1.25rem auto 0;
+  text-align: left;
+}
+
+/* ----- POLICIES ----- */
+.policies {
+  padding: 100px 0;
+  background: var(--cream-2);
+}
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.policy-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-sm);
+}
+.policy-card h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.2rem;
+}
+.policy-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  font-size: 0.98rem;
+}
+
+/* ----- DEPOSIT NOTICE ----- */
+.deposit-notice {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--ink);
+  padding: 18px 20px;
+  margin: 0;
+}
+.deposit-notice p {
+  margin: 0 0 0.65rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.deposit-notice p:last-child {
+  margin-bottom: 0;
+}
+.deposit-notice--compact {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  background: transparent;
+  border: none;
+  border-left: none;
+  padding: 0;
+}
+.deposit-notice--compact a {
+  color: var(--rose);
+  font-weight: 500;
+}
+.field-checkbox {
+  margin-top: 0.25rem;
+}
+.checkbox-label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.checkbox-label input {
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+.checkbox-label a {
+  color: var(--rose);
+}
+
+/* ----- PROMO ----- */
+.promo-tag {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.promo-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.promo-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(43, 35, 32, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+.promo-modal {
+  position: relative;
+  z-index: 1;
+  width: min(520px, 100%);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--rose);
+  padding: clamp(28px, 4vw, 40px);
+  box-shadow: 0 24px 64px rgba(43, 35, 32, 0.22);
+  outline: none;
+}
+
+.promo-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.promo-modal-close:hover {
+  background: var(--cream-2);
+  color: var(--ink);
+}
+
+.promo-modal h2 {
+  font-size: clamp(1.45rem, 3vw, 1.85rem);
+  margin: 0 0 0.75rem;
+  padding-right: 2rem;
+}
+
+.promo-modal p:not(.promo-tag) {
+  color: var(--ink-soft);
+  margin: 0 0 1.5rem;
+  line-height: 1.65;
+}
+
+.promo-modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ----- SERVICE MENUS ----- */
+.service-menus {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+.service-menu {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--line);
+}
+.service-menu h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+}
+.service-menu-note {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
+}
+.service-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.service-menu li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.98rem;
+}
+.service-menu li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.service-menu li span:last-child {
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+/* ----- BOOKING ----- */
+.booking-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.contact-form select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  font: inherit;
+  color: var(--ink);
+}
 
 /* ----- EXPECT ----- */
 .expect { padding: 100px 0; }
@@ -900,6 +1127,8 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
 
   .service-grid,
   .tips-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-menus { grid-template-columns: 1fr; }
+  .policy-grid { grid-template-columns: 1fr; }
   .expect-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 

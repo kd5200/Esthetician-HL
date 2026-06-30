@@ -15,7 +15,7 @@ Single-page marketing site for a licensed esthetician. React + Vite + Framer Mot
 - **Framework:** React 19, Vite 6
 - **Animation:** Framer Motion
 - **Styles:** `styles.css` (CSS variables, no CSS-in-JS)
-- **CI:** GitHub Actions — `npm run build`
+- **CI:** GitHub Actions — build + AWS deploy
 
 ## Canonical paths
 
@@ -27,6 +27,7 @@ Single-page marketing site for a licensed esthetician. React + Vite + Framer Mot
 | `images/`, `videos/` | Static assets |
 | `specs/active/` | In-flight specs |
 | `artifacts/` | Generated screenshots/exports (gitignored) |
+| `infra/terraform/` | AWS S3 + CloudFront |
 
 ## Commands
 

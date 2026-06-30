@@ -6,6 +6,7 @@ import {
   useScroll,
   useTransform,
 } from 'framer-motion';
+import BookLink from './BookLink';
 
 const CLIPS = [
   {
@@ -235,20 +236,20 @@ export default function HeroBanner() {
           animate="visible"
         >
           <motion.p className="hero-welcome" variants={itemVariants}>
-            Welcome to
+            Hajime Lente Skin Studio
           </motion.p>
           <motion.h1 variants={itemVariants}>
-            Hey there, <em>glow-getter!</em>
+            Healthy skin is <em>self-care.</em>
           </motion.h1>
           <motion.p className="lede" variants={itemVariants}>
-            We all have skin issues. Let&apos;s fix that. Personalized facials
-            and skincare rituals designed around your skin, your goals, and the
-            version of you that feels most confident.
+            Natural, clinical skincare in Fort Lauderdale — customized facials,
+            dermaplaning, nano-needling, peels, and more. Every treatment is
+            built around the health of your skin and the routine that supports it.
           </motion.p>
           <motion.div variants={itemVariants}>
-            <a href="#book" className="btn btn-hero">
-              Book Your Service <span aria-hidden="true">→</span>
-            </a>
+            <BookLink className="btn btn-hero">
+              Book Online <span aria-hidden="true">→</span>
+            </BookLink>
           </motion.div>
         </motion.div>
       </div>

@@ -6,79 +6,88 @@ import MotionStagger, {
   MotionCard,
   MotionLine,
 } from "./components/MotionStagger";
+import BookLink from "./components/BookLink";
+import DepositNotice, { POLICY_SECTIONS } from "./components/BookingPolicy";
+import PromoModal from "./components/PromoModal";
 import SiteHeader, { SiteFooter } from "./components/SiteChrome";
+import { SITE, depositLabel } from "./siteConfig";
 
-const SERVICES = [
+const FACIALS = [
   {
     img: "/images/service-signature.svg",
-    alt: "Signature Glow Facial",
+    alt: "Customized signature facial",
     num: "01",
-    title: "Signature Glow Facial",
-    desc: "My most comprehensive, results-driven facial. Cleanse, exfoliate, extract, mask, and massage to hydrate, brighten, smooth, and restore balance.",
-    meta: "60 min · $95",
+    title: "Customized Signature Facial",
+    desc: "A tailored treatment built around your skin analysis — cleanse, exfoliate, treat, and restore balance with clinical-grade care.",
+    meta: "$60",
   },
   {
     img: "/images/service-age.svg",
-    alt: "Age Defense Facial",
+    alt: "Dermaplaning facial",
     num: "02",
-    title: "Age Defense Facial",
-    desc: "Designed for fine lines, wrinkles, and loss of firmness. Targeted peptides and lifting massage to visibly smooth and renew.",
-    meta: "75 min · $120",
-  },
-  {
-    img: "/images/service-acne.svg",
-    alt: "Clarifying Acne Facial",
-    num: "03",
-    title: "Clarifying Acne Facial",
-    desc: "For stubborn blackheads, whiteheads, cystic acne, pustules, and breakouts. Deep cleanse, extractions, and calming finish.",
-    meta: "75 min · $110",
+    title: "Dermaplaning Facial",
+    desc: "Gentle physical exfoliation removes peach fuzz and dull surface cells so products penetrate and skin looks smooth and luminous.",
+    meta: "$80",
   },
   {
     img: "/images/service-hydration.svg",
-    alt: "Ultra-Hydration Facial",
+    alt: "Nano-needling facial",
+    num: "03",
+    title: "Nano-Needling Facial",
+    desc: "A no-downtime treatment that boosts product absorption and supports collagen renewal for clearer, healthier-looking skin.",
+    meta: "$80",
+  },
+  {
+    img: "/images/service-acne.svg",
+    alt: "Chemical peel",
     num: "04",
-    title: "Ultra-Hydration Facial",
-    desc: "For dry, sensitive, eczema- or psoriasis-prone skin. Layered hydration, soothing botanicals, and a moisture-locking mask.",
-    meta: "60 min · $95",
+    title: "Chemical Peel",
+    desc: "Professional-strength exfoliation to improve texture, tone, and clarity. Strength and peel type selected for your skin goals.",
+    meta: "$100",
   },
   {
     img: "/images/service-back.svg",
-    alt: "Back Facial",
+    alt: "Back facial",
     num: "05",
     title: "Back Facial",
-    desc: "Treat the skin you can't see. Deep cleanse, exfoliate, and extract for a smoother, clearer back — perfect before a getaway.",
-    meta: "45 min · $85",
+    desc: "Deep cleanse, exfoliate, and treat the skin you can't see — ideal for breakouts, congestion, or pre-event prep.",
+    meta: "Book for pricing",
   },
-  {
-    img: "/images/service-brow.svg",
-    alt: "Brow Shape and Wax",
-    num: "06",
-    title: "Brow Shape & Wax",
-    desc: "Custom brow mapping and gentle waxing to frame your face. Add a lash & brow tint to complete the look.",
-    meta: "30 min · $35+",
-  },
+];
+
+const BROW_LASH_MENU = [
+  { name: "Lash Lift + Tint", price: "$50" },
+  { name: "Brow Lamination + Tint + Wax", price: "$60" },
+];
+
+const WAXING_MENU = [
+  { name: "Leg Wax", price: "$40" },
+  { name: "Arm Wax", price: "$25" },
+  { name: "Underarms", price: "$10" },
+  { name: "Brows", price: "$25" },
+  { name: "Lip", price: "$5" },
 ];
 
 const STEPS = [
   {
     num: "1",
     title: "Consult",
-    desc: "We start with a complimentary 20-minute virtual consultation to understand your skin, your history, and your goals.",
+    desc: "We review your skin history, lifestyle, and goals so every recommendation is grounded in what your skin actually needs.",
   },
   {
     num: "2",
     title: "Analyze",
-    desc: "At your appointment, I perform a thorough skin analysis under proper lighting to map exactly what your skin needs today.",
+    desc: "A thorough skin analysis under proper lighting maps your concerns — from barrier health to texture, tone, and congestion.",
   },
   {
     num: "3",
     title: "Treat",
-    desc: "You'll relax through a fully customized facial — every step tailored to your skin type, sensitivities, and goals.",
+    desc: "Your facial or service is customized with clinical protocols and professional products — never a one-size-fits-all menu.",
   },
   {
     num: "4",
-    title: "Glow",
-    desc: "Leave with visibly healthier skin and a personalized at-home routine so the glow keeps going long after you leave.",
+    title: "Maintain",
+    desc: "You leave with a clear at-home plan so the results last. Healthy skin is built through consistent, informed self-care.",
   },
 ];
 
@@ -86,23 +95,23 @@ const TIPS = [
   {
     img: "/images/tip-routine.svg",
     alt: "Daily skincare routine",
-    tag: "Routine",
-    title: "The only 4 steps your AM routine truly needs",
-    desc: "Cleanser, antioxidant serum, moisturizer, SPF — here's how to choose each one for your skin type.",
-  },
-  {
-    img: "/images/tip-acne.svg",
-    alt: "Recurring acne tips",
-    tag: "Acne",
-    title: "Why your acne keeps coming back",
-    desc: "It's usually one of three things: barrier damage, over-exfoliation, or the wrong actives at the wrong time.",
+    tag: "Self-Care",
+    title: "Why consistent care matters more than trendy products",
+    desc: "Healthy skin starts with a simple, steady routine — cleanser, treatment, moisturizer, and daily SPF you will actually use.",
   },
   {
     img: "/images/tip-hydration.svg",
-    alt: "Hydration vs dryness",
-    tag: "Hydration",
-    title: "Dehydrated vs. dry skin — what's the difference?",
-    desc: "One is a skin type, the other is a condition. Treating them the same is why nothing's working.",
+    alt: "Skin barrier health",
+    tag: "Skin Health",
+    title: "Your barrier is the foundation of every result",
+    desc: "When the skin barrier is compromised, even great products underperform. Repair first, then treat.",
+  },
+  {
+    img: "/images/tip-acne.svg",
+    alt: "Professional skincare guidance",
+    tag: "Clinical Care",
+    title: "Professional treatments work best with a plan",
+    desc: "Facials and peels deliver lasting change when paired with the right home care — that's where GlyMed and guided routines come in.",
   },
 ];
 
@@ -144,10 +153,17 @@ function useSiteChrome() {
       const name = form.querySelector("#name")?.value.trim();
       const email = form.querySelector("#email")?.value.trim();
       const message = form.querySelector("#message")?.value.trim();
+      const policyAccepted = form.querySelector("#policyAccept")?.checked;
 
       if (!name || !email || !message) {
         status.classList.add("error");
         status.textContent = "Please fill in your name, email, and message.";
+        return;
+      }
+      if (!policyAccepted) {
+        status.classList.add("error");
+        status.textContent =
+          "Please acknowledge the booking and deposit policy to continue.";
         return;
       }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -171,6 +187,23 @@ function useSiteChrome() {
   }, []);
 }
 
+function ServiceMenu({ title, note, items }) {
+  return (
+    <div className="service-menu">
+      <h3>{title}</h3>
+      {note ? <p className="service-menu-note">{note}</p> : null}
+      <ul>
+        {items.map((item) => (
+          <li key={item.name}>
+            <span>{item.name}</span>
+            <span>{item.price}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export default function App() {
   useSiteChrome();
   const year = new Date().getFullYear();
@@ -178,6 +211,8 @@ export default function App() {
   return (
     <>
       <SiteHeader />
+
+      <PromoModal />
 
       <HeroBanner />
 
@@ -200,28 +235,30 @@ export default function App() {
             delayChildren={0.08}
           >
             <MotionLine as="p" className="eyebrow">
-              Welcome to the Studio
+              Clinical Skincare · Natural Results
             </MotionLine>
             <MotionLine as="h2">
-              Building confidence, one glow at a time.
+              Self-care rooted in the science of healthy skin.
             </MotionLine>
             <MotionLine as="p">
               I&apos;m <strong>Hajime</strong> — a licensed esthetician trained
-              at Aveda Clinic, where I performed customized facials, back
-              facials, waxing, and brow services on a wide range of clients.
-              I&apos;m passionate about helping people stop wasting money on the
-              wrong products and start seeing real, lasting results.
+              at Aveda Clinic. My approach is natural and clinical: thorough
+              analysis, evidence-based treatments, and honest guidance so you
+              invest in what your skin actually needs.
             </MotionLine>
             <MotionLine as="p">
-              Every appointment begins with a thorough skin analysis and
-              consultation. From there, we build a treatment and at-home routine
-              tailored to your skin type, lifestyle, and the goals that matter
-              most to you.
+              I work with <strong>GlyMed Plus</strong> professional products to
+              support real results — from customized facials and dermaplaning to
+              nano-needling, chemical peels, back facials, waxing, and brow and
+              lash services.
+            </MotionLine>
+            <MotionLine as="p">
+              Healthy skin is not vanity — it is self-care. Every appointment
+              begins with understanding your skin, then building a treatment and
+              home routine you can maintain with confidence.
             </MotionLine>
             <MotionLine>
-              <a href="#contact" className="btn btn-outline">
-                Meet Hajime →
-              </a>
+              <BookLink className="btn btn-outline">Book Online →</BookLink>
             </MotionLine>
           </MotionStagger>
         </div>
@@ -230,9 +267,9 @@ export default function App() {
       <section className="services" id="services">
         <div className="container">
           <MotionSectionHead
-            eyebrow="Let's Get Your Glow On"
-            title="Facial Services & Treatments"
-            subtitle="At Hajime Lente Skin Studio, you're booking more than just a facial. We'll achieve your skin goals — and I want the experience to feel like a true escape. You'll leave pampered, refreshed, and glowing."
+            eyebrow="Services & Pricing"
+            title="Treatments tailored to your skin"
+            subtitle="Clinical facials, brows and lashes, and body waxing — each service is selected and performed with your skin health in mind."
           />
 
           <MotionStagger
@@ -240,7 +277,7 @@ export default function App() {
             stagger={0.09}
             delayChildren={0.12}
           >
-            {SERVICES.map((service) => (
+            {FACIALS.map((service) => (
               <MotionCard key={service.title} className="service-card">
                 <div className="card-media">
                   <img src={service.img} alt={service.alt} loading="lazy" />
@@ -255,10 +292,23 @@ export default function App() {
             ))}
           </MotionStagger>
 
+          <MotionReveal delay={0.15}>
+            <div className="service-menus">
+              <ServiceMenu
+                title="Brows & Lashes"
+                items={BROW_LASH_MENU}
+              />
+              <ServiceMenu
+                title="Waxing"
+                note="Full-body waxing available — book online or ask during your consultation."
+                items={WAXING_MENU}
+              />
+            </div>
+          </MotionReveal>
+
           <MotionReveal className="services-cta" delay={0.2} variant="scale">
-            <a href="#book" className="btn btn-primary">
-              Book Your Appointment
-            </a>
+            <BookLink className="btn btn-primary">Book Online</BookLink>
+            <DepositNotice compact />
           </MotionReveal>
         </div>
       </section>
@@ -288,9 +338,9 @@ export default function App() {
           <MotionReveal variant="scale">
             <blockquote>
               <p>
-                &ldquo;I wanted to help anyone who feels like it&apos;s
-                impossible to be comfortable in their own skin. Confidence
-                starts with how you feel when you look in the mirror.&rdquo;
+                &ldquo;Taking care of your skin is self-care. When your skin is
+                healthy, you feel more confident showing up as yourself — that
+                is what this work is really about.&rdquo;
               </p>
               <cite>— Hajime</cite>
             </blockquote>
@@ -302,8 +352,8 @@ export default function App() {
         <div className="container">
           <MotionSectionHead
             eyebrow="From the Studio"
-            title="Skincare Tips"
-            subtitle="Quick reads from Hajime on building a routine that actually works for your skin."
+            title="Skin Health Notes"
+            subtitle="Practical guidance on building a routine that supports healthy skin — naturally and clinically."
           />
 
           <MotionStagger
@@ -321,10 +371,29 @@ export default function App() {
                   <h4>{tip.title}</h4>
                   <p>{tip.desc}</p>
                   <a href="#contact" className="read-more">
-                    Read more →
+                    Ask Hajime →
                   </a>
                 </div>
               </MotionCard>
+            ))}
+          </MotionStagger>
+        </div>
+      </section>
+
+      <section className="policies" id="policies">
+        <div className="container">
+          <MotionSectionHead
+            eyebrow="Studio Policies"
+            title="Booking, deposits & cancellations"
+            subtitle="A small deposit protects your appointment time and helps keep the schedule fair for every client."
+          />
+
+          <MotionStagger className="policy-grid" stagger={0.08} delayChildren={0.06}>
+            {POLICY_SECTIONS.map((section) => (
+              <MotionLine key={section.title} className="policy-card">
+                <h3>{section.title}</h3>
+                <p>{section.body()}</p>
+              </MotionLine>
             ))}
           </MotionStagger>
         </div>
@@ -338,31 +407,42 @@ export default function App() {
             delayChildren={0.06}
           >
             <MotionLine as="p" className="eyebrow">
-              Have a question?
+              Book Online
             </MotionLine>
-            <MotionLine as="h2">Let&apos;s start your skin journey.</MotionLine>
+            <MotionLine as="h2">Start your skin health journey.</MotionLine>
             <MotionLine as="p">
-              Hey beautiful! I&apos;m so excited to start this journey with you.
-              I offer a complimentary 20-minute virtual consultation so we can
-              get to know each other and create your personalized plan.
-              Let&apos;s do this together.
+              Ready to prioritize your skin? Book online for the fastest
+              scheduling, or send a message and Hajime will help you find the
+              right service.
             </MotionLine>
+
+            <MotionLine className="booking-actions">
+              <BookLink className="btn btn-primary">Book Online</BookLink>
+              <a href={`tel:${SITE.phoneTel}`} className="btn btn-outline">
+                Call {SITE.phoneDisplay}
+              </a>
+            </MotionLine>
+
+            <MotionLine>
+              <DepositNotice />
+            </MotionLine>
+
             <MotionLine as="ul" className="contact-list">
               <li>
                 <strong>Email</strong>
-                <a href="mailto:Hajimel@icloud.com">Hajimel@icloud.com</a>
+                <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
               </li>
               <li>
                 <strong>Phone</strong>
-                <a href="tel:+13373782049">(337) 378-2049</a>
+                <a href={`tel:${SITE.phoneTel}`}>{SITE.phoneDisplay}</a>
               </li>
               <li>
                 <strong>Location</strong>
-                <span>Fort Lauderdale, FL 33308</span>
+                <span>{SITE.location}</span>
               </li>
               <li>
                 <strong>Hours</strong>
-                <span>By appointment · Tue – Sat</span>
+                <span>{SITE.hours}</span>
               </li>
             </MotionLine>
             <MotionLine as="p" className="contact-note">
@@ -390,14 +470,40 @@ export default function App() {
                   </div>
                 </MotionLine>
                 <MotionLine className="field">
-                  <label htmlFor="hear">
-                    How did you hear about Hajime Lente?
-                  </label>
-                  <input id="hear" name="hear" type="text" />
+                  <label htmlFor="service">Service of interest</label>
+                  <select id="service" name="service" defaultValue="">
+                    <option value="" disabled>
+                      Select a service
+                    </option>
+                    <option value="customized-facial">Customized Signature Facial</option>
+                    <option value="dermaplaning">Dermaplaning Facial</option>
+                    <option value="nano-needling">Nano-Needling Facial</option>
+                    <option value="chemical-peel">Chemical Peel</option>
+                    <option value="back-facial">Back Facial</option>
+                    <option value="brows-lashes">Brows & Lashes</option>
+                    <option value="waxing">Waxing</option>
+                    <option value="other">Other / Not sure</option>
+                  </select>
                 </MotionLine>
                 <MotionLine className="field">
                   <label htmlFor="message">Message</label>
                   <textarea id="message" name="message" rows={5} required />
+                </MotionLine>
+                <MotionLine className="field field-checkbox">
+                  <label className="checkbox-label" htmlFor="policyAccept">
+                    <input
+                      id="policyAccept"
+                      name="policyAccept"
+                      type="checkbox"
+                      required
+                    />
+                    <span>
+                      I understand a deposit ({depositLabel()}) is required
+                      upfront to confirm my appointment, and that no-shows or
+                      late cancellations may forfeit the deposit.{" "}
+                      <a href="#policies">Read policy</a>
+                    </span>
+                  </label>
                 </MotionLine>
                 <MotionLine>
                   <button type="submit" className="btn btn-primary btn-block">

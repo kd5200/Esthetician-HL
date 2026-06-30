@@ -38,6 +38,16 @@ npm run preview   # optional smoke check
 
 ## Deploy
 
+**AWS (primary):**
+
+```bash
+cd infra/terraform && terraform apply
+# Configure GitHub secrets — see infra/README.md
+# Push to main or run Deploy workflow
+```
+
 - Build: `npm run build`
-- Output: `dist/`
-- See [docs/deployment.md](../../docs/deployment.md)
+- Output: `dist/` → S3 → CloudFront
+- See [docs/infrastructure.md](../../docs/infrastructure.md)
+
+**Alternatives:** Netlify / Vercel / Cloudflare Pages — see [docs/deployment.md](../../docs/deployment.md)
