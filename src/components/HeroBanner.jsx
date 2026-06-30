@@ -61,7 +61,26 @@ const itemVariants = {
   },
 };
 
-function CarouselSlide({ clip, isActive, reduceMotion }) {
+function useCompactViewport() {
+  const [compact, setCompact] = useState(false);
+
+  useEffect(() => {
+    const narrow = window.matchMedia("(max-width: 960px)");
+    const coarse = window.matchMedia("(pointer: coarse)");
+    const update = () => setCompact(narrow.matches || coarse.matches);
+    update();
+    narrow.addEventListener("change", update);
+    coarse.addEventListener("change", update);
+    return () => {
+      narrow.removeEventListener("change", update);
+      coarse.removeEventListener("change", update);
+    };
+  }, []);
+
+  return compact;
+}
+
+function CarouselSlide({ clip, isActive, reduceMotion, compactViewport }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -104,7 +123,7 @@ function CarouselSlide({ clip, isActive, reduceMotion }) {
           poster={clip.poster}
           aria-label={clip.label}
           style={{ objectPosition: clip.objectPosition }}
-          animate={isActive ? { scale: [1, 1.06, 1] } : { scale: 1 }}
+          animate={isActive && !compactViewport ? { scale: [1, 1.06, 1] } : { scale: 1 }}
           transition={
             isActive
               ? { duration: SLIDE_DURATION_MS / 1000, ease: 'linear' }
@@ -120,6 +139,7 @@ function CarouselSlide({ clip, isActive, reduceMotion }) {
 
 export default function HeroBanner() {
   const reduceMotion = useReducedMotion();
+  const compactViewport = useCompactViewport();
   const bannerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -129,6 +149,7 @@ export default function HeroBanner() {
     offset: ['start start', 'end start'],
   });
   const carouselY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
+  const parallaxEnabled = !reduceMotion && !compactViewport;
 
   const goTo = useCallback((index) => {
     setActiveIndex((index + CLIPS.length) % CLIPS.length);
@@ -167,7 +188,7 @@ export default function HeroBanner() {
       >
         <motion.div
           className="hero-carousel"
-          style={reduceMotion ? undefined : { y: carouselY }}
+          style={parallaxEnabled ? { y: carouselY } : undefined}
           aria-live="polite"
           aria-roledescription="carousel"
           aria-label="Spa treatment highlights"
@@ -185,6 +206,7 @@ export default function HeroBanner() {
                 clip={CLIPS[activeIndex]}
                 isActive
                 reduceMotion={reduceMotion}
+                compactViewport={compactViewport}
               />
             </motion.div>
           </AnimatePresence>

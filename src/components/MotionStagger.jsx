@@ -40,7 +40,6 @@ export function MotionCard({ children, className }) {
       variants={fadeUp}
       whileHover={{
         y: cardHover.hover.y,
-        boxShadow: cardHover.hover.boxShadow,
         borderColor: 'rgba(232, 213, 196, 0.9)',
       }}
       transition={{ duration: 0.35, ease }}

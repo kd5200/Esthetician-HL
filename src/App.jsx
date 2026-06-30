@@ -11,10 +11,13 @@ import DepositNotice, { POLICY_SECTIONS } from "./components/BookingPolicy";
 import PromoModal from "./components/PromoModal";
 import SiteHeader, { SiteFooter } from "./components/SiteChrome";
 import { SITE, depositLabel } from "./siteConfig";
+import { ASSETS } from "./assets";
+import Photo from "./components/Photo";
+import StudioCarousel from "./components/StudioCarousel";
 
 const FACIALS = [
   {
-    img: "/images/service-signature.svg",
+    ...ASSETS.services.signature,
     alt: "Customized signature facial",
     num: "01",
     title: "Customized Signature Facial",
@@ -22,7 +25,7 @@ const FACIALS = [
     meta: "$60",
   },
   {
-    img: "/images/service-age.svg",
+    ...ASSETS.services.dermaplaning,
     alt: "Dermaplaning facial",
     num: "02",
     title: "Dermaplaning Facial",
@@ -30,7 +33,7 @@ const FACIALS = [
     meta: "$80",
   },
   {
-    img: "/images/service-hydration.svg",
+    ...ASSETS.services.nanoNeedling,
     alt: "Nano-needling facial",
     num: "03",
     title: "Nano-Needling Facial",
@@ -38,7 +41,7 @@ const FACIALS = [
     meta: "$80",
   },
   {
-    img: "/images/service-acne.svg",
+    ...ASSETS.services.chemicalPeel,
     alt: "Chemical peel",
     num: "04",
     title: "Chemical Peel",
@@ -46,7 +49,7 @@ const FACIALS = [
     meta: "$100",
   },
   {
-    img: "/images/service-back.svg",
+    ...ASSETS.services.backFacial,
     alt: "Back facial",
     num: "05",
     title: "Back Facial",
@@ -220,10 +223,9 @@ export default function App() {
         <div className="container welcome-grid">
           <MotionReveal className="welcome-img" variant="left">
             <div className="img-frame">
-              <img
-                src="/images/about.svg"
-                alt="Inside the Hajime Lente Skin Studio"
-                loading="lazy"
+              <StudioCarousel
+                clips={ASSETS.studio.clips}
+                fallback={ASSETS.studio.fallback}
               />
             </div>
             <div className="img-accent" />
@@ -280,7 +282,11 @@ export default function App() {
             {FACIALS.map((service) => (
               <MotionCard key={service.title} className="service-card">
                 <div className="card-media">
-                  <img src={service.img} alt={service.alt} loading="lazy" />
+                  <Photo
+                    src={service.src}
+                    fallback={service.fallback}
+                    alt={service.alt}
+                  />
                 </div>
                 <div className="card-body">
                   <div className="service-num">{service.num}</div>
